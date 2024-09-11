@@ -1,9 +1,14 @@
 #pragma once
 
+#include <iostream>
+#include <fstream>
+
 class Point
 {
 public:
-	Point(double& x, double& y, double& z);
+	Point(double x = 0, double y = 0, double z = 0);
+
+	void SaveToFile();
 
 	void PrintCoordinates();
 

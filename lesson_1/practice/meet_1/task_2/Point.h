@@ -1,28 +1,30 @@
 #pragma once
 
 #include <iostream>
+#include <string>
 #include <fstream>
 
 class Point
 {
 public:
-	Point(double x = 0, double y = 0, double z = 0);
+	Point(int x = 0, int y = 0, int z = 0);
 
-	void SaveToFile();
+	void SaveToFile(std::string pathToFile);
+	void LoadFromFile(std::string pathToFile);
 
 	void PrintCoordinates();
 
-	void SetX(double x);
-	void SetY(double x);
-	void SetZ(double x);
+	void SetX(int x);
+	void SetY(int y);
+	void SetZ(int z);
 
-	double GetX(double x);
-	double GetY(double x);
-	double GetZ(double x);
+	int GetX();
+	int GetY();
+	int GetZ();
 
 private:
-	double m_x;
-	double m_y;
-	double m_z;
+	int m_x;
+	int m_y;
+	int m_z;
 };
 

@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include<string>
 
 class Student
 {
@@ -7,17 +8,17 @@ public:
 	void PrintData();
 	void InputData();
 
-	void SetName();
-	void SetSurname();
-	void SetPatronymic();
-	void SetDateOfBirth();
-	void SetPhoneNumber();
-	void SetCity();
-	void SetCountry();
-	void SetEducationalInstitution();
-	void SetCityOfEducationalInstitution();
-	void SetCountryOfEducationalInstitution();
-	void SetnumberOfGroup();
+	void SetName(std::string name);
+	void SetSurname(std::string surname);
+	void SetPatronymic(std::string patronymic);
+	void SetDateOfBirth(std::string dateOfBirth);
+	void SetPhoneNumber(std::string phoneNumber);
+	void SetCity(std::string city);
+	void SetCountry(std::string country);
+	void SetEducationalInstitution(std::string educationalInstitution);
+	void SetCityOfEducationalInstitution(std::string cityOfEducationalInstitution);
+	void SetCountryOfEducationalInstitution(std::string countryOfEducationalInstitution);
+	void SetnumberOfGroup(std::string numberOfGroup);
 
 	std::string GetName();
 	std::string GetSurname();

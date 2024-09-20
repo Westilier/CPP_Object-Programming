@@ -5,19 +5,25 @@
 class String
 {
 public:
-	String(const char * string);
-	explicit String(size_t size = 10);
+	String();
+	explicit String(const char * string);
+	explicit String(size_t size);
+
 	~String();
 
 	size_t GetSize() const;
 	void Resize(size_t size);
 	char GetElement(int index) const;
+
+	void Input();
 	void Print() const;
-	friend void Print(String String);
+
+	static size_t Counter();
+
 private:
 	size_t m_size;
-	char*  m_string;
-
-
+	char* m_string{nullptr};
+	static size_t m_count;
 };
+
 

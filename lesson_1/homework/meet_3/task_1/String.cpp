@@ -1,27 +1,34 @@
 #include "String.h"
 
+String::String() :m_size(81)
+{
+	String::m_count++;
+
+	m_string = new char[m_size];
+}
+
 String::String(const char* string) 
 {
-	m_size = strlen(string);
-	std::cout << m_size;
-	char* m_string = new char[m_size];
-	size_t i=0;
-	while (i < m_size)
+	String::m_count++;
+
+	m_size = strlen(string) + 1;
+	m_string = new char[m_size];
+	if (m_string)
 	{
-		m_string[i] = string[i];
-		i++;
+		strcpy_s(m_string, m_size, string);
 	}
 }
 
-String::String(size_t size)
+String::String(size_t size) :m_size(size)
 {
-	m_size = size;
-	char* m_string = new char[m_size];
-	//m_string[m_size-1] = '\0';
+	String::m_count++;
+
+	m_string = new char[m_size];
 }
 
 String::~String()
 {
+	String::m_count--;
 	delete[] m_string;
 }
 
@@ -37,30 +44,31 @@ void String::Resize(size_t size)
 
 char String::GetElement(int index) const
 {
-	std::cout << 213;
-	if (index < m_size && index >= -static_cast<int>(m_size))
+	if (index < m_size && m_string != NULL)
 	{
-		return m_string[index];
-	}
-	else
-	{
-		return 'f';
+		return  m_string[index];
 	}
 }
 
-void Print(String string) 
+void String::Input()
 {
-	for (size_t i = 0; i < string.GetSize()-1; ++i)
+	fgets(m_string, m_size, stdin);
+	m_size = strlen(m_string) + 1;
+}
+
+void String::Print() const
+{
+	for (size_t i = 0; i < m_size; ++i)
 	{
-		std::cout << string.GetElement(i);
+		std::cout << GetElement(i);
 	}
 }
-//void String::Print()
-//{
-//	for (size_t i = 0; i < m_size - 1; ++i)
-//	{
-//		std::cout << GetElement(i);
-//	}
-//}
+
+size_t String::Counter()
+{
+	return m_count;
+}
+
+size_t String::m_count{ 0 };
 
 

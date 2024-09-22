@@ -71,4 +71,3 @@ size_t String::Counter()
 
 size_t String::m_count{ 0 };
 
-

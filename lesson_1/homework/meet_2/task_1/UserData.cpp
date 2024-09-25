@@ -91,7 +91,3 @@ void UserData::SetAdditionalInformation(MyString additionalInformation)
 {
 	m_additionalInformation = additionalInformation;
 }
-
-
-
-

@@ -5,6 +5,7 @@
 class UserData
 {
 public:
+
 	void Input();
 	void Print();
 
@@ -22,7 +23,6 @@ public:
 	void SetHomePhoneNumber(MyString homePhoneNumber);
 	void SetAdditionalInformation(MyString additionalInformation);
 
-	operator==
 private:
 	MyString m_name;
 	MyString m_surname;

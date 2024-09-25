@@ -1,6 +1,6 @@
 #include "UserList.h"
 
-void UserList::AddUser(UserData& user)
+void UserList::AddUser(UserData const& user)
 {
 	m_userList.push_back(user);
 	std::cout << 20;
@@ -8,29 +8,27 @@ void UserList::AddUser(UserData& user)
 
 void UserList::DeleteUser(MyString& surname)
 {
-	UserList userListNew;
-	UserData user;
+	//UserList userListNew;
+	//UserData user;
 	int index = SearchBySurname(surname);
-	UserData needUser = m_userList[index];
-	for (size_t i = m_userList.size(); i >= 0; --i)
-	{
-		user = m_userList[i];
-		if (user == needUser)
-		{
+	//UserData needUser = m_userList[index];
+	//for (size_t i = m_userList.size(); i >= 0; --i)
+	//{
+	//	user = m_userList[i];
+	//	m_userList.pop_back();
+	//	if (user == needUser)
+	//	{
+	//		continue;
+	//	}
+	//	userListNew.m_userList.push_back(user);
+	//}
 
-		}
-		m_userList.pop_back();
-		userListNew.m_userList.push_back(user);
-	}
-	while (!m_userList.empty())
-	{
-
-	}
 	if (index >= 0)
 	{
 		//m_userList[index].~UserData();
-
-		m_userList.erase(m_userList.cbegin() + index);
+		std::cout<< m_userList[index].GetName().GetString();
+		m_userList.pop_back();
+		//m_userList.erase(m_userList.cbegin() + index);
 		std::cout << "Пользователь удален" << std::endl;
 	}
 	else
@@ -52,7 +50,7 @@ UserData UserList::GetUser(size_t index)
 	return UserData();
 }
 
-int UserList::SearchByName(MyString name)
+int UserList::SearchByName(MyString& name)
 {
 	for (size_t i = 0; i < m_userList.size(); ++i)
 	{
@@ -64,7 +62,7 @@ int UserList::SearchByName(MyString name)
 	return -1;
 }
 
-int UserList::SearchBySurname(MyString surname)
+int UserList::SearchBySurname(MyString& surname)
 {
 	for (size_t i = 0; i < m_userList.size(); ++i)
 	{
@@ -76,7 +74,7 @@ int UserList::SearchBySurname(MyString surname)
 	return -1;
 }
 
-int UserList::SearchByPatronymic(MyString patronymic)
+int UserList::SearchByPatronymic(MyString& patronymic)
 {
 	for (size_t i = 0; i < m_userList.size(); ++i)
 	{

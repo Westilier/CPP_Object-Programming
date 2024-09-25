@@ -7,6 +7,14 @@ class MyString
 public:
 	MyString();
 	MyString(const char* string);
+	MyString(const MyString& object)
+		: m_string{ new char[object.m_size] }, m_size{ object.m_size }
+	{
+		for (int i{ 0 }; i < m_size; ++i)
+		{
+			m_string[i] = object.m_string[i];
+		};
+	}
 	explicit MyString(size_t size);
 
 	~MyString();

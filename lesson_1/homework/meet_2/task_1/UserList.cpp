@@ -1,25 +1,35 @@
 #include "UserList.h"
 
-UserList::~UserList()
+void UserList::AddUser(UserData& user)
 {
-	for (size_t i = 0; i < m_userList.size(); ++i)
-	{
-		m_userList[i].~UserData();
-	}
-}
-
-void UserList::AddUser(UserData user)
-{
-
 	m_userList.push_back(user);
+	std::cout << 20;
 }
 
-void UserList::DeleteUser(MyString surname)
+void UserList::DeleteUser(MyString& surname)
 {
+	UserList userListNew;
+	UserData user;
 	int index = SearchBySurname(surname);
-
-	if (index > 0)
+	UserData needUser = m_userList[index];
+	for (size_t i = m_userList.size(); i >= 0; --i)
 	{
+		user = m_userList[i];
+		if (user == needUser)
+		{
+
+		}
+		m_userList.pop_back();
+		userListNew.m_userList.push_back(user);
+	}
+	while (!m_userList.empty())
+	{
+
+	}
+	if (index >= 0)
+	{
+		//m_userList[index].~UserData();
+
 		m_userList.erase(m_userList.cbegin() + index);
 		std::cout << "Пользователь удален" << std::endl;
 	}

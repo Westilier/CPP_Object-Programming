@@ -9,10 +9,9 @@
 class UserList
 {
 public:
-	~UserList();
 
-	void AddUser(UserData user);
-	void DeleteUser(MyString Surname);
+	void AddUser(UserData& user);
+	void DeleteUser(MyString& Surname);
 
 	void PrintAllUsers();
 

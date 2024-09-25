@@ -12,9 +12,9 @@ int main()
 	UserData newUser;
 	MyString buffer;
 
-	bool IsOn = true;
-	while (IsOn)
+	while (true)
 	{
+		std::cout << 1;
 		std::cin.ignore(20, '\n');
 		std::cout << "1 - добавить абонента" << std::endl
 				<< "2 - удалить абонента" << std::endl
@@ -92,12 +92,12 @@ int main()
 			userList.LoadFromFile(buffer);
 			break;
 		case 0:
-			IsOn = false;
-			break;
+			return 0;
 		default:
 			std::cout << "Некорректный ввод" << std::endl;
 			break;
 		}
+		std::cout << 2;
 	}
-	return 0;
+
 }

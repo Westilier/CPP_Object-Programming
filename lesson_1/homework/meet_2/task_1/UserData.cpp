@@ -1,15 +1,5 @@
 #include "UserData.h"
 
-UserData::~UserData()
-{
-	m_name.~MyString();
-	m_surname.~MyString();
-	m_patronymic.~MyString();
-	m_workPhoneNumber.~MyString();
-	m_homePhoneNumber.~MyString();
-	m_additionalInformation.~MyString();
-}
-
 void UserData::Input()
 {
 	std::cout << "¬ведите им€ " << std::endl;

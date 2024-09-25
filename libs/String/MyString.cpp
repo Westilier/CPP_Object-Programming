@@ -7,15 +7,15 @@ MyString::MyString() :m_size(81)
 	m_string = new char[m_size];
 }
 
-MyString::MyString(const char* MyString)
+MyString::MyString(const char* myString)
 {
 	MyString::m_count++;
 
-	m_size = strlen(MyString) + 1;
+	m_size = strlen(myString) + 1;
 	m_string = new char[m_size];
 	if (m_string)
 	{
-		strcpy_s(m_string, m_size, MyString);
+		strcpy_s(m_string, m_size, myString);
 	}
 }
 
@@ -28,6 +28,7 @@ MyString::MyString(size_t size) :m_size(size)
 
 MyString::~MyString()
 {
+	std::cout << 3 << std::endl;
 	MyString::m_count--;
 	delete[] m_string;
 }

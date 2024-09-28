@@ -1,11 +1,21 @@
 #pragma once
 
-#include "MyString.h"
+#include "../../../../libs/String/MyString.h"
 
 class UserData
 {
 public:
 
+
+	//~UserData()
+	//{
+	//	 m_name.~MyString();
+	//	 m_surname.~MyString();
+	//	 m_patronymic.~MyString();
+	//	 m_workPhoneNumber.~MyString();
+	//	 m_homePhoneNumber.~MyString();
+	//	 m_additionalInformation.~MyString();
+	//}
 	void Input();
 	void Print();
 
@@ -16,12 +26,12 @@ public:
 	inline MyString GetHomePhoneNumber() const;
 	inline MyString GetAdditionalInformation() const;
 
-	void SetName(MyString name);
-	void SetSurname(MyString surname);
-	void SetPatronymic(MyString patronymic);
-	void SetWorkPhoneNumber(MyString workPhoneNumber);
-	void SetHomePhoneNumber(MyString homePhoneNumber);
-	void SetAdditionalInformation(MyString additionalInformation);
+	void SetName(MyString& name);
+	void SetSurname(MyString& surname);
+	void SetPatronymic(MyString& patronymic);
+	void SetWorkPhoneNumber(MyString& workPhoneNumber);
+	void SetHomePhoneNumber(MyString& homePhoneNumber);
+	void SetAdditionalInformation(MyString& additionalInformation);
 
 private:
 	MyString m_name;

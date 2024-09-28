@@ -19,13 +19,24 @@ MyString::MyString(const char* myString)
 	}
 }
 
-MyString::MyString(const MyString& object) : m_string{ new char[object.m_size] }, m_size{ object.m_size }
+MyString::MyString(std::string& object)
+	:m_size(object.size()),m_string(new char [m_size + 1])
 {
-	for (int i = 0; i < m_size; ++i)
+	for (int i = 0 ; i < m_size; ++i)
+	{
+		m_string[i] = object[i];
+	};
+}
+
+MyString::MyString(const MyString& object)
+	: m_string{ new char[object.m_size] }, m_size{ object.m_size }
+{
+	for (int i = 0 ; i < m_size; ++i)
 	{
 		m_string[i] = object.m_string[i];
 	};
 }
+
 MyString::MyString(size_t size) :m_size(size)
 {
 	MyString::m_count++;
@@ -35,9 +46,9 @@ MyString::MyString(size_t size) :m_size(size)
 
 MyString::~MyString()
 {
-	std::cout << 3 << std::endl;
 	MyString::m_count--;
 	delete[] m_string;
+	std::cout << 59;
 }
 
 void MyString::Resize(size_t size)

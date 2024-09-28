@@ -14,8 +14,6 @@ int main()
 
 	while (true)
 	{
-		std::cout << 1;
-		std::cin.ignore(20, '\n');
 		std::cout << "1 - добавить абонента" << std::endl
 				<< "2 - удалить абонента" << std::endl
 				<< "3 - искать абонента по имени" << std::endl
@@ -23,7 +21,7 @@ int main()
 				<< "5 - искать абонента по отчеству" << std::endl
 				<< "6 - показать всех абонентов" << std::endl
 				<< "7 - сохранить информацию в файл" << std::endl
-				<< "8 - загрузить информацию из файла" << std::endl
+				//<< "8 - загрузить информацию из файла" << std::endl
 				<< "0 - Выход" << std::endl;
 		size_t key;
 		std::cin >> key;
@@ -33,6 +31,7 @@ int main()
 		case 1:
 			newUser.Input();
 			userList.AddUser(newUser);
+			std::cout<<newUser.GetName().GetString()[1];
 			break;
 		case 2:
 			std::cout << "Введите фамилию" << std::endl;
@@ -43,7 +42,7 @@ int main()
 			std::cout << "Введите имя" << std::endl;
 			buffer.Input();
 			index = userList.SearchByName(buffer);
-			if (index > 0)
+			if (index >= 0)
 			{
 				userList.GetUser(index).Print();
 			}
@@ -56,7 +55,7 @@ int main()
 			std::cout << "Введите фамилию" << std::endl;
 			buffer.Input();
 			index = userList.SearchBySurname(buffer);
-			if (index > 0)
+			if (index >= 0)
 			{
 				userList.GetUser(index).Print();
 			}
@@ -69,7 +68,7 @@ int main()
 			std::cout << "Введите Отчество" << std::endl;
 			buffer.Input();
 			index = userList.SearchByPatronymic(buffer);
-			if (index > 0)
+			if (index >= 0)
 			{
 				userList.GetUser(index).Print();
 			}
@@ -82,22 +81,17 @@ int main()
 			userList.PrintAllUsers();
 			break;
 		case 7:
-			std::cout << "Введите имя файла";
-			buffer.Input();
-			userList.SaveToFile(buffer);
+			userList.SaveToFile();
 			break;
-		case 8:
-			std::cout << "Введите имя файла";
-			buffer.Input();
-			userList.LoadFromFile(buffer);
-			break;
+		//case 8:
+		//	userList.LoadFromFile();
+		//	break;
 		case 0:
 			return 0;
 		default:
 			std::cout << "Некорректный ввод" << std::endl;
 			break;
 		}
-		std::cout << 2;
 	}
 
 }

@@ -20,14 +20,11 @@ public:
 	int SearchBySurname(MyString& surname);
 	int SearchByPatronymic(MyString& patronymic);
 
-	void SaveToFile(MyString fileName);
-	void LoadFromFile(MyString fileName);
+	void SaveToFile();
+	//void LoadFromFile(); не рабочая функция
 
 	UserData GetUser(size_t index);
-	std::vector<UserData> Vector()
-	{
-		return m_userList;
-	}
+
 private:
 	std::vector<UserData> m_userList;
 };

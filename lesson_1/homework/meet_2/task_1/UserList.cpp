@@ -3,32 +3,15 @@
 void UserList::AddUser(UserData const& user)
 {
 	m_userList.push_back(user);
-	std::cout << 20;
 }
 
 void UserList::DeleteUser(MyString& surname)
 {
-	//UserList userListNew;
-	//UserData user;
 	int index = SearchBySurname(surname);
-	//UserData needUser = m_userList[index];
-	//for (size_t i = m_userList.size(); i >= 0; --i)
-	//{
-	//	user = m_userList[i];
-	//	m_userList.pop_back();
-	//	if (user == needUser)
-	//	{
-	//		continue;
-	//	}
-	//	userListNew.m_userList.push_back(user);
-	//}
 
 	if (index >= 0)
 	{
-		//m_userList[index].~UserData();
-		std::cout<< m_userList[index].GetName().GetString();
-		m_userList.pop_back();
-		//m_userList.erase(m_userList.cbegin() + index);
+		m_userList.erase(m_userList.cbegin() + index);
 		std::cout << "Пользователь удален" << std::endl;
 	}
 	else
@@ -42,12 +25,13 @@ void UserList::PrintAllUsers()
 	for (size_t i = 0; i < m_userList.size(); ++i)
 	{
 		m_userList[i].Print();
+		std::cout<<std::endl;
 	}
 }
 
 UserData UserList::GetUser(size_t index)
 {
-	return UserData();
+	return m_userList[index];
 }
 
 int UserList::SearchByName(MyString& name)
@@ -87,55 +71,75 @@ int UserList::SearchByPatronymic(MyString& patronymic)
 
 }
 
-void UserList::SaveToFile(MyString fileName)
+void UserList::SaveToFile()
 {
-	std::ofstream save(fileName.GetString());
+	std::cout << "Введите имя файла";
+	std::string filename;
+	getline(std::cin, filename);
+	filename += ".txt";
+	std::cout << filename;
+	std::ofstream save;
+	save.open(filename);
 
 	for (size_t i = 0; i < m_userList.size(); ++i)
 	{
-		save << "1." << m_userList[i].GetName().GetString();
-		save << "2." << m_userList[i].GetSurname().GetString();
-		save << "3." << m_userList[i].GetPatronymic().GetString();
-		save << "4." << m_userList[i].GetWorkPhoneNumber().GetString();
-		save << "5." << m_userList[i].GetHomePhoneNumber().GetString();
-		save << "6." << m_userList[i].GetAdditionalInformation().GetString();
+		save << "1." << m_userList[i].GetName().GetString() << std::endl;
+		save << "2." << m_userList[i].GetSurname().GetString() << std::endl;
+		save << "3." << m_userList[i].GetPatronymic().GetString() << std::endl;
+		save << "4." << m_userList[i].GetWorkPhoneNumber().GetString() << std::endl;
+		save << "5." << m_userList[i].GetHomePhoneNumber().GetString() << std::endl;
+		save << "6." << m_userList[i].GetAdditionalInformation().GetString() << std::endl;
 	}
 	save.close();
 }
 
-void UserList::LoadFromFile(MyString fileName)
-{
-	std::string filenameStdStr = fileName.GetString();
-	std::ifstream load(filenameStdStr + ".txt");
-	std::string buffer;
-	while(getline(load, buffer))
-	{
-		UserData newUser;
-		if (buffer.find("1.") != std::string::npos)
-		{
-			newUser.SetName(buffer.c_str());
-		}
-		else if (buffer.find("2.") != std::string::npos)
-		{
-			newUser.SetSurname(buffer.c_str());
-		}
-		else if (buffer.find("3.") != std::string::npos)
-		{
-			newUser.SetPatronymic(buffer.c_str());
-		}
-		else if (buffer.find("4.") != std::string::npos)
-		{
-			newUser.SetWorkPhoneNumber(buffer.c_str());
-		}
-		else if (buffer.find("5.") != std::string::npos)
-		{
-			newUser.SetHomePhoneNumber(buffer.c_str());
-		}
-		else if (buffer.find("6.") != std::string::npos)
-		{
-			newUser.SetAdditionalInformation(buffer.c_str());
-		}
-		m_userList.push_back(newUser);
-	}
-	load.close();
-}
+//void UserList::LoadFromFile()
+//{
+//	std::cout << "Введите имя файла";
+//	std::string filename;
+//	getline(std::cin,filename);
+//	filename += ".txt";
+//	std::cout << filename;
+//	std::ifstream load(filename);
+//	std::string buffer;
+//
+//	UserData newUser;
+//	while(getline(load, buffer))
+//	{
+//		std::cout << buffer;
+//		if (buffer.find("1.") != std::string::npos)
+//		{
+//			MyString nameMyStr(buffer);
+//			newUser.SetName(nameMyStr);
+//		}
+//		else if (buffer.find("2.") != std::string::npos)
+//		{
+//			MyString surnameMyStr(buffer);
+//			newUser.SetSurname(surnameMyStr);
+//		}
+//		else if (buffer.find("3.") != std::string::npos)
+//		{
+//			MyString patronymicMyStr(buffer);
+//			newUser.SetPatronymic(patronymicMyStr);
+//		}
+//		else if (buffer.find("4.") != std::string::npos)
+//		{
+//			MyString workPhoneNumberMyStr(buffer);
+//			newUser.SetWorkPhoneNumber(workPhoneNumberMyStr);
+//		}
+//		else if (buffer.find("5.") != std::string::npos)
+//		{
+//			MyString homePhoneNumberMyStr(buffer);
+//			newUser.SetHomePhoneNumber(homePhoneNumberMyStr);
+//		}
+//		else if (buffer.find("6.") != std::string::npos)
+//		{
+//			MyString additionalInformationMyStr(buffer);
+//			newUser.SetAdditionalInformation(additionalInformationMyStr);
+//			m_userList.push_back(newUser);
+//		}
+//		std::cout << 30 << std::endl;
+//	}
+//	//newUser.~UserData();
+//	load.close();
+//}

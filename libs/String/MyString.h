@@ -6,8 +6,10 @@ class MyString
 {
 public:
 	MyString();
-	MyString(const char* string);
+	MyString(const char* myString);
+	MyString(std::string& object);
 	MyString(const MyString& object);
+
 	explicit MyString(size_t size);
 
 	~MyString();

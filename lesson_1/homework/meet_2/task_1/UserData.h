@@ -10,11 +10,11 @@ public:
 	void Print();
 
 	inline MyString GetName() const;
-	MyString GetSurname() const;
-	MyString GetPatronymic() const;
-	MyString GetWorkPhoneNumber() const;
-	MyString GetHomePhoneNumber() const;
-	MyString GetAdditionalInformation() const;
+	inline MyString GetSurname() const;
+	inline MyString GetPatronymic() const;
+	inline MyString GetWorkPhoneNumber() const;
+	inline MyString GetHomePhoneNumber() const;
+	inline MyString GetAdditionalInformation() const;
 
 	void SetName(MyString name);
 	void SetSurname(MyString surname);

@@ -9,7 +9,7 @@ public:
 	void Input();
 	void Print();
 
-	MyString GetName() const;
+	inline MyString GetName() const;
 	MyString GetSurname() const;
 	MyString GetPatronymic() const;
 	MyString GetWorkPhoneNumber() const;

@@ -32,32 +32,32 @@ void UserData::Print()
 	m_additionalInformation.Print();
 }
 
-MyString UserData::GetName() const
+inline MyString UserData::GetName() const
 {
 	return m_name;
 }
 
-MyString UserData::GetSurname() const
+inline MyString UserData::GetSurname() const
 {
 	return m_surname;
 }
 
-MyString UserData::GetPatronymic() const
+inline MyString UserData::GetPatronymic() const
 {
 	return m_patronymic;
 }
 
-MyString UserData::GetWorkPhoneNumber() const
+inline MyString UserData::GetWorkPhoneNumber() const
 {
 	return m_workPhoneNumber;
 }
 
-MyString UserData::GetHomePhoneNumber() const
+inline MyString UserData::GetHomePhoneNumber() const
 {
 	return m_homePhoneNumber;
 }
 
-MyString UserData::GetAdditionalInformation() const
+inline MyString UserData::GetAdditionalInformation() const
 {
 	return m_additionalInformation;
 }

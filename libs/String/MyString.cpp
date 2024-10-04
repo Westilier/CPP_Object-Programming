@@ -19,6 +19,13 @@ MyString::MyString(const char* myString)
 	}
 }
 
+MyString::MyString(const MyString& object) : m_string{ new char[object.m_size] }, m_size{ object.m_size }
+{
+	for (int i = 0; i < m_size; ++i)
+	{
+		m_string[i] = object.m_string[i];
+	};
+}
 MyString::MyString(size_t size) :m_size(size)
 {
 	MyString::m_count++;

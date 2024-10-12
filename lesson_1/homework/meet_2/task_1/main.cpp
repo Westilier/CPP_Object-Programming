@@ -21,7 +21,7 @@ int main()
 				<< "5 - искать абонента по отчеству" << std::endl
 				<< "6 - показать всех абонентов" << std::endl
 				<< "7 - сохранить информацию в файл" << std::endl
-				//<< "8 - загрузить информацию из файла" << std::endl
+				<< "8 - загрузить информацию из файла" << std::endl
 				<< "0 - Выход" << std::endl;
 		size_t key;
 		std::cin >> key;
@@ -31,7 +31,6 @@ int main()
 		case 1:
 			newUser.Input();
 			userList.AddUser(newUser);
-			std::cout<<newUser.GetName().GetString()[1];
 			break;
 		case 2:
 			std::cout << "Введите фамилию" << std::endl;
@@ -83,9 +82,10 @@ int main()
 		case 7:
 			userList.SaveToFile();
 			break;
-		//case 8:
-		//	userList.LoadFromFile();
-		//	break;
+		case 8:
+
+			userList.LoadFromFile();
+			break;
 		case 0:
 			return 0;
 		default:

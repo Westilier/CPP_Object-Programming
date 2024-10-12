@@ -5,17 +5,6 @@
 class UserData
 {
 public:
-
-
-	//~UserData()
-	//{
-	//	 m_name.~MyString();
-	//	 m_surname.~MyString();
-	//	 m_patronymic.~MyString();
-	//	 m_workPhoneNumber.~MyString();
-	//	 m_homePhoneNumber.~MyString();
-	//	 m_additionalInformation.~MyString();
-	//}
 	void Input();
 	void Print();
 
@@ -26,15 +15,15 @@ public:
 	inline MyString GetHomePhoneNumber() const;
 	inline MyString GetAdditionalInformation() const;
 
-	void SetName(MyString& name);
-	void SetSurname(MyString& surname);
-	void SetPatronymic(MyString& patronymic);
-	void SetWorkPhoneNumber(MyString& workPhoneNumber);
-	void SetHomePhoneNumber(MyString& homePhoneNumber);
-	void SetAdditionalInformation(MyString& additionalInformation);
+	void SetName(MyString const& name);
+	void SetSurname(MyString const& surname);
+	void SetPatronymic(MyString const& patronymic);
+	void SetWorkPhoneNumber(MyString const& workPhoneNumber);
+	void SetHomePhoneNumber(MyString const& homePhoneNumber);
+	void SetAdditionalInformation(MyString const& additionalInformation);
 
 private:
-	MyString m_name;
+	std::string m_name;
 	MyString m_surname;
 	MyString m_patronymic;
 	MyString m_workPhoneNumber;

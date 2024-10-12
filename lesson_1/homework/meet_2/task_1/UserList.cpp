@@ -93,53 +93,46 @@ void UserList::SaveToFile()
 	save.close();
 }
 
-//void UserList::LoadFromFile()
-//{
-//	std::cout << "ֲגוהטעו טלÿ פאיכא";
-//	std::string filename;
-//	getline(std::cin,filename);
-//	filename += ".txt";
-//	std::cout << filename;
-//	std::ifstream load(filename);
-//	std::string buffer;
-//
-//	UserData newUser;
-//	while(getline(load, buffer))
-//	{
-//		std::cout << buffer;
-//		if (buffer.find("1.") != std::string::npos)
-//		{
-//			MyString nameMyStr(buffer);
-//			newUser.SetName(nameMyStr);
-//		}
-//		else if (buffer.find("2.") != std::string::npos)
-//		{
-//			MyString surnameMyStr(buffer);
-//			newUser.SetSurname(surnameMyStr);
-//		}
-//		else if (buffer.find("3.") != std::string::npos)
-//		{
-//			MyString patronymicMyStr(buffer);
-//			newUser.SetPatronymic(patronymicMyStr);
-//		}
-//		else if (buffer.find("4.") != std::string::npos)
-//		{
-//			MyString workPhoneNumberMyStr(buffer);
-//			newUser.SetWorkPhoneNumber(workPhoneNumberMyStr);
-//		}
-//		else if (buffer.find("5.") != std::string::npos)
-//		{
-//			MyString homePhoneNumberMyStr(buffer);
-//			newUser.SetHomePhoneNumber(homePhoneNumberMyStr);
-//		}
-//		else if (buffer.find("6.") != std::string::npos)
-//		{
-//			MyString additionalInformationMyStr(buffer);
-//			newUser.SetAdditionalInformation(additionalInformationMyStr);
-//			m_userList.push_back(newUser);
-//		}
-//		std::cout << 30 << std::endl;
-//	}
-//	//newUser.~UserData();
-//	load.close();
-//}
+void UserList::LoadFromFile()
+{
+	std::cout << "ֲגוהטעו טלÿ פאיכא";
+	std::string filename;
+	getline(std::cin,filename);
+	filename += ".txt";
+	std::cout << filename;
+	std::ifstream load(filename);
+	std::string buffer;
+
+	UserData newUser;
+	while(getline(load, buffer))
+	{
+		std::cout << buffer;
+		if (buffer.find("1.") != std::string::npos)
+		{
+			newUser.SetName(MyString(buffer));
+		}
+		else if (buffer.find("2.") != std::string::npos)
+		{
+			newUser.SetSurname(MyString(buffer));
+		}
+		else if (buffer.find("3.") != std::string::npos)
+		{
+			newUser.SetPatronymic(MyString(buffer));
+		}
+		else if (buffer.find("4.") != std::string::npos)
+		{
+			newUser.SetWorkPhoneNumber(MyString(buffer));
+		}
+		else if (buffer.find("5.") != std::string::npos)
+		{
+			newUser.SetHomePhoneNumber(MyString(buffer));
+		}
+		else if (buffer.find("6.") != std::string::npos)
+		{
+			newUser.SetAdditionalInformation(MyString(buffer));
+			m_userList.push_back(newUser);
+		}
+		std::cout << 30 << std::endl;
+	}
+	load.close();
+}

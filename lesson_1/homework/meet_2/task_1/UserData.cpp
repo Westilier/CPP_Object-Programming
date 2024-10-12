@@ -4,7 +4,7 @@ void UserData::Input()
 {
 	std::cin.ignore(20, '\n');
 	std::cout << "Введите имя " << std::endl;
-	m_name.Input();
+	//m_name.Input();
 	std::cout << "Введите фамилию " << std::endl;
 	m_surname.Input();
 	std::cout << "Введите отчество " << std::endl;
@@ -21,7 +21,7 @@ void UserData::Input()
 void UserData::Print()
 {
 	std::cout << "Имя: ";
-	m_name.Print();
+	//m_name.Print();
 	std::cout << "Фамилию: ";
 	m_surname.Print();
 	std::cout << "Отчество: ";
@@ -64,32 +64,32 @@ inline MyString UserData::GetAdditionalInformation() const
 	return m_additionalInformation;
 }
 
-void UserData::SetName(MyString& name)
+void UserData::SetName(MyString const& name)
 {
 	m_name = name;
 }
 
-void UserData::SetSurname(MyString& surname)
+void UserData::SetSurname(MyString const& surname)
 {
 	m_surname = surname;
 }
 
-void UserData::SetPatronymic(MyString& patronymic)
+void UserData::SetPatronymic(MyString const& patronymic)
 {
 	m_patronymic = patronymic;
 }
 
-void UserData::SetWorkPhoneNumber(MyString& workPhoneNumber)
+void UserData::SetWorkPhoneNumber(MyString const& workPhoneNumber)
 {
 	m_workPhoneNumber = workPhoneNumber;
 }
 
-void UserData::SetHomePhoneNumber(MyString& homePhoneNumber)
+void UserData::SetHomePhoneNumber(MyString const& homePhoneNumber)
 {
 	m_homePhoneNumber = homePhoneNumber;
 }
 
-void UserData::SetAdditionalInformation(MyString& additionalInformation)
+void UserData::SetAdditionalInformation(MyString const& additionalInformation)
 {
 	m_additionalInformation = additionalInformation;
 }

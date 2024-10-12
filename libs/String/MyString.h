@@ -6,11 +6,11 @@ class MyString
 {
 public:
 	MyString();
+	explicit MyString(size_t size);
 	MyString(const char* myString);
 	MyString(std::string& object);
-	MyString(const MyString& object);
 
-	explicit MyString(size_t size);
+	MyString(const MyString& object);
 
 	~MyString();
 
@@ -27,9 +27,11 @@ public:
 
 	bool Ñompare(MyString string);
 
+	MyString& operator=(const MyString& object);
+
 private:
 	size_t m_size;
-	char* m_string{ nullptr };
+	char* m_string;
 	static size_t m_count;
 };
 

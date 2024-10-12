@@ -1,6 +1,15 @@
 ﻿#include "MyString.h"
 
+size_t MyString::m_count{ 0 };
+
 MyString::MyString() :m_size(81)
+{
+	MyString::m_count++;
+
+	m_string = new char[m_size];
+}
+
+MyString::MyString(size_t size) :m_size(size)
 {
 	MyString::m_count++;
 
@@ -20,35 +29,26 @@ MyString::MyString(const char* myString)
 }
 
 MyString::MyString(std::string& object)
-	:m_size(object.size()),m_string(new char [m_size + 1])
+	:m_size(object.size()), m_string(new char[m_size+1])
 {
-	for (int i = 0 ; i < m_size; ++i)
-	{
-		m_string[i] = object[i];
-	};
+	strcpy(m_string, object.c_str());
 }
 
 MyString::MyString(const MyString& object)
 	: m_string{ new char[object.m_size] }, m_size{ object.m_size }
 {
-	for (int i = 0 ; i < m_size; ++i)
-	{
-		m_string[i] = object.m_string[i];
-	};
-}
-
-MyString::MyString(size_t size) :m_size(size)
-{
-	MyString::m_count++;
-
-	m_string = new char[m_size];
+	m_string = object.m_string;
 }
 
 MyString::~MyString()
 {
-	MyString::m_count--;
-	delete[] m_string;
-	std::cout << 59;
+	if (m_string != nullptr)
+	{
+		MyString::m_count--;
+		delete[] m_string;
+		std::cout << "del";
+	}
+	std::cout << "no del";
 }
 
 void MyString::Resize(size_t size)
@@ -93,8 +93,6 @@ size_t MyString::Counter()
 	return m_count;
 }
 
-size_t MyString::m_count{ 0 };
-
 bool MyString::Сompare(MyString string)
 {
 	if (m_size == string.GetSize())
@@ -113,4 +111,16 @@ bool MyString::Сompare(MyString string)
 		return false;
 	}
 
+}
+
+MyString& MyString::operator=(const MyString& object)
+{
+	if (this != &object)
+	{
+		delete[] m_string;
+		m_string = new char[object.m_size];
+		m_string = object.m_string;
+		m_size = object.m_size;
+	}
+	return *this;
 }

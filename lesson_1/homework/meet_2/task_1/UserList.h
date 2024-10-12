@@ -21,7 +21,7 @@ public:
 	int SearchByPatronymic(MyString& patronymic);
 
 	void SaveToFile();
-	//void LoadFromFile(); не рабочая функция
+	void LoadFromFile(); 
 
 	UserData GetUser(size_t index);
 

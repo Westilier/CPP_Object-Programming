@@ -1,4 +1,5 @@
 #pragma once
+#include<vector>
 
 #include"Apartment.h"
 
@@ -13,8 +14,7 @@ public:
 	void AddApartment(const Apartment& Apartment);
 	void Print();
 private:
-	Apartment* m_apartments;
-	size_t m_size;
+	std::vector<Apartment> m_apartments;
 	size_t m_number;
 };
 

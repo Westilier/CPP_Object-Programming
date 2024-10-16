@@ -1,5 +1,5 @@
 #pragma once
-#include <string.h>
+#include <string>
 #include <iostream>
 
 class Human
@@ -13,9 +13,8 @@ public:
 	Human& operator=(const Human& other);
 
 	void Input();
-	void Print();
+	void Print() const;
 private :
-	char* m_FIO {nullptr};
-	size_t m_size;
+	std::string m_FIO;
 };
 

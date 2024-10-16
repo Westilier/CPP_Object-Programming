@@ -9,5 +9,6 @@ int main()
 	apartment.AddHuman(man);
 	apartment.Print();
 	house.AddApartment(apartment);
+	house.Print();
 	return 0;
 }

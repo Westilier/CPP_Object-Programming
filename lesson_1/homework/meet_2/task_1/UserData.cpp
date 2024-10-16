@@ -4,7 +4,7 @@ void UserData::Input()
 {
 	std::cin.ignore(20, '\n');
 	std::cout << "Введите имя " << std::endl;
-	//m_name.Input();
+	m_name.Input();
 	std::cout << "Введите фамилию " << std::endl;
 	m_surname.Input();
 	std::cout << "Введите отчество " << std::endl;
@@ -21,7 +21,7 @@ void UserData::Input()
 void UserData::Print()
 {
 	std::cout << "Имя: ";
-	//m_name.Print();
+	m_name.Print();
 	std::cout << "Фамилию: ";
 	m_surname.Print();
 	std::cout << "Отчество: ";

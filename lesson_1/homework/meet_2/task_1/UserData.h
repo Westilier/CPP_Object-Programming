@@ -23,7 +23,7 @@ public:
 	void SetAdditionalInformation(MyString const& additionalInformation);
 
 private:
-	std::string m_name;
+	MyString m_name;
 	MyString m_surname;
 	MyString m_patronymic;
 	MyString m_workPhoneNumber;

@@ -8,7 +8,7 @@ public:
 	MyString();
 	explicit MyString(size_t size);
 	MyString(const char* myString);
-	MyString(std::string& object);
+	MyString(MyString& object);
 
 	MyString(const MyString& object);
 

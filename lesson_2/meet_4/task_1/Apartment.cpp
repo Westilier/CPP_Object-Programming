@@ -37,7 +37,7 @@ void Apartment::Print()
 	}
 }
 
-void Apartment::Input(Human human, size_t number)
+void Apartment::Input(Human human, size_t apartmentNumber)
 {
 	m_humans.push_back(human);
 	m_number = number;

@@ -7,6 +7,7 @@ class House
 {
 public:
 	House();
+	House(Apartment apartment, size_t HouseNumber);
 
 	House(const House& apartment);
 	~House();

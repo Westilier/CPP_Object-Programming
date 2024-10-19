@@ -25,7 +25,7 @@ public:
 
 	bool operator == (const Reservoir& other) const;
 
-	friend std::ostream& operator<<(std::ostream& out, const Reservoir& Reservoir);
+	friend std::ostream& operator<<(std::ostream& out, const Reservoir& reservoir);
 
 private:
 	std::string m_name;

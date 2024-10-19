@@ -88,17 +88,17 @@ bool Reservoir::operator==(const Reservoir& other) const
 	return false;
 }
 
-std::ostream& operator<<(std::ostream& out, const Reservoir& Reservoir)
+std::ostream& operator<<(std::ostream& out, const Reservoir& reservoir)
 {
 	out << "name:";
-	out << Reservoir.m_name << std::endl;
+	out << reservoir.m_name << std::endl;
 	out << "type:";
-	out << Reservoir.m_type << std::endl;
+	out << reservoir.m_type << std::endl;
 	out << "length:";
-	out << Reservoir.m_length << std::endl;
+	out << reservoir.m_length << std::endl;
 	out << "width:";
-	out << Reservoir.m_width << std::endl;
+	out << reservoir.m_width << std::endl;
 	out << "depth:";
-	out << Reservoir.m_depth << std::endl;
+	out << reservoir.m_depth << std::endl;
 	return out;
 }

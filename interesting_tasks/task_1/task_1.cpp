@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <windows.h>
+#include "TreeNode.h"
 
 bool IsLetter(char symbol)
 {
@@ -20,13 +21,14 @@ int main()
     SetConsoleOutputCP(1251);
     using Word = std::vector<char>;
     using Words = std::vector <Word>;
-    Word word;
+    std::vector<char> word;
     Words words;
-    std::ifstream in("2.txt");
+    std::ifstream in("1.txt");
     if (!in.is_open())
     {
         std::cout << "не удалось открыть файл"<<std::endl;
     }
+
     char symbol;
     while (in.get(symbol))
     {
@@ -44,21 +46,30 @@ int main()
         {
             word.push_back(symbol);
         }
-        else
+        else if(symbol != '.' && symbol != ',' && symbol != '?' && symbol != '!' && symbol != '"' && symbol != ':')
         {
             words.push_back(word);
             word.clear();
         }
     }
     words.push_back(word);
-    for(size_t i = 0;i<words.size();i++)
+
+    TreeNode treeNode;
+    while (!words.empty())
     {
-        word = words[i];
-        for (size_t j = 0; j < word.size(); j++)
-        {
-            std::cout << word[j];
-        }
+        treeNode.Add(words.back());
+        words.pop_back();
     }
+
+    //for(size_t i = 0;i<words.size();i++)
+    //{
+    //    word = words[i];
+    //    for (size_t j = 0; j < word.size(); j++)
+    //    {
+    //        std::cout << word[j];
+    //    }
+    //    std::cout<<std::endl;
+    //}
     return 0;
 }
 

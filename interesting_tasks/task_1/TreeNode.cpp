@@ -54,3 +54,28 @@ void TreeNode::Add(std::vector<char> word)
 		}
 	}
 }
+
+std::vector<WordAndCount> TreeNode::Collect()
+{
+	std::vector<WordAndCount> wordsAndCounts;
+	std::vector<WordAndCount> gettingWordsAndCounts;
+	if (m_leftNode != nullptr)
+	{
+		gettingWordsAndCounts = m_leftNode->Collect();
+		wordsAndCounts.insert(wordsAndCounts.end(), gettingWordsAndCounts.begin(), gettingWordsAndCounts.end());
+	}
+	if (m_rightNode != nullptr)
+	{
+		WordAndCount wordAndCount(m_word,m_count);
+		wordsAndCounts.push_back(wordAndCount);
+		gettingWordsAndCounts = m_rightNode->Collect();
+		wordsAndCounts.insert(wordsAndCounts.end(), gettingWordsAndCounts.begin(), gettingWordsAndCounts.end());
+	}
+	else
+	{
+		WordAndCount wordAndCount(m_word, m_count);
+		wordsAndCounts.push_back(wordAndCount);
+	}
+	return wordsAndCounts;
+}
+

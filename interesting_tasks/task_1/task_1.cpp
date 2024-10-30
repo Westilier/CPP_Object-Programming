@@ -4,7 +4,7 @@
 #include <windows.h>
 #include "TreeNode.h"
 
-bool IsLetter(char symbol)
+bool IsLetter(char& symbol)
 {
     return symbol >= 'а' && symbol <= 'я' ||
         symbol >= 'А' && symbol <= 'Я' ||
@@ -12,17 +12,38 @@ bool IsLetter(char symbol)
         symbol >= 'a' && symbol <= 'z' ||
         symbol >= 'A' && symbol <= 'Z';
 }
+bool IsLower(char& symbol)
+{
+    return symbol >= 'а' && symbol <= 'я' || symbol == 'ё' || symbol >= 'a' && symbol <= 'z';
+}
+bool IsRussianLanguage(char& symbol)
+{
+    return symbol >= 'а' && symbol <= 'я' ||
+        symbol >= 'А' && symbol <= 'Я' ||
+        symbol == 'ё' || symbol == 'Ё';
+}
+void ToLower(char& symbol)
+{
+    if (symbol == 'Ё')
+    {
+        symbol = 'ё';
+    }
 
-
+    if (IsRussianLanguage(symbol))
+    {
+        symbol -= ('А' - 'а');
+    }
+    else
+    {
+        symbol -= ('Z' - 'z');
+    }
+}
 
 int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    using Word = std::vector<char>;
-    using Words = std::vector <Word>;
     std::vector<char> word;
-    Words words;
     std::ifstream in("1.txt");
     if (!in.is_open())
     {
@@ -30,11 +51,20 @@ int main()
     }
 
     char symbol;
+    TreeNode treeNode;
     while (in.get(symbol))
     {
         if (IsLetter(symbol))
         {
-            word.push_back(symbol);
+            if (IsLower(symbol))
+            {
+                word.push_back(symbol);
+            }
+            else
+            {
+                ToLower(symbol);
+                word.push_back(symbol);
+            }
         }
         else if (symbol == '-')
         {
@@ -48,28 +78,18 @@ int main()
         }
         else if(symbol != '.' && symbol != ',' && symbol != '?' && symbol != '!' && symbol != '"' && symbol != ':')
         {
-            words.push_back(word);
+            treeNode.Add(word);
             word.clear();
         }
     }
-    words.push_back(word);
-
-    TreeNode treeNode;
-    while (!words.empty())
+    treeNode.Add(word);
+    std::vector<WordAndCount> wordsAndCounts = treeNode.Collect();
+    std::ofstream out("wordsAndCounts.txt");
+    for(size_t i = 0;i< wordsAndCounts.size();i++)
     {
-        treeNode.Add(words.back());
-        words.pop_back();
+        out <<wordsAndCounts[i];
+        out << std::endl;
     }
-
-    //for(size_t i = 0;i<words.size();i++)
-    //{
-    //    word = words[i];
-    //    for (size_t j = 0; j < word.size(); j++)
-    //    {
-    //        std::cout << word[j];
-    //    }
-    //    std::cout<<std::endl;
-    //}
     return 0;
 }
 

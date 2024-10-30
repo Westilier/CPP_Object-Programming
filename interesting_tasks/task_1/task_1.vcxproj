@@ -130,9 +130,11 @@
   <ItemGroup>
     <ClCompile Include="task_1.cpp" />
     <ClCompile Include="TreeNode.cpp" />
+    <ClCompile Include="WordAndCount.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TreeNode.h" />
+    <ClInclude Include="WordAndCount.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

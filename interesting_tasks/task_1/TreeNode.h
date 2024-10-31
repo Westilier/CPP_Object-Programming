@@ -1,19 +1,20 @@
 #pragma once
 #include "WordAndCount.h"
 #include <vector>
-
+//
 //template<typename T>
 //class INode 
 //{
 //public:
-//	T parameter;
+//	T m_word;
 //	int m_count;
-//	INode*
-//	virtual void add() = 0;
-//	virtual vector<T>
+//	INode* m_leftNode;
+//	INode* m_rightNode;
+//	virtual void Add() = 0;
+//	virtual std::vector<WordAndCount> Collect() = 0;
 //};
 
-class TreeNode
+class TreeNode /*:INode<std::vector<char>>*/
 {
 public:
 	TreeNode();
@@ -28,7 +29,5 @@ private:
 	int m_count;
 	TreeNode* m_leftNode;
 	TreeNode* m_rightNode;
-
-
 };
 

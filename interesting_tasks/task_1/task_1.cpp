@@ -16,26 +16,12 @@ bool IsLower(char& symbol)
 {
     return symbol >= 'а' && symbol <= 'я' || symbol == 'ё' || symbol >= 'a' && symbol <= 'z';
 }
-bool IsRussianLanguage(char& symbol)
-{
-    return symbol >= 'а' && symbol <= 'я' ||
-        symbol >= 'А' && symbol <= 'Я' ||
-        symbol == 'ё' || symbol == 'Ё';
-}
+
 void ToLower(char& symbol)
 {
-    if (symbol == 'Ё')
+    if (!IsLower(symbol))
     {
-        symbol = 'ё';
-    }
-
-    if (IsRussianLanguage(symbol))
-    {
-        symbol -= ('А' - 'а');
-    }
-    else
-    {
-        symbol -= ('Z' - 'z');
+        symbol += 32;
     }
 }
 
@@ -56,33 +42,33 @@ int main()
     {
         if (IsLetter(symbol))
         {
-            if (IsLower(symbol))
-            {
-                word.push_back(symbol);
-            }
-            else
-            {
-                ToLower(symbol);
-                word.push_back(symbol);
-            }
+            ToLower(symbol);
+            word.push_back(symbol);
         }
         else if (symbol == '-')
         {
             in.get(symbol);
-            in.get(symbol);
-            word.push_back(symbol);
+
+            if (symbol == '-' || IsLetter(symbol))
+            {
+                word.push_back(symbol);
+            }
         }
         else if (symbol == '\'')
         {
             word.push_back(symbol);
         }
-        else if(symbol != '.' && symbol != ',' && symbol != '?' && symbol != '!' && symbol != '"' && symbol != ':')
+        else if ((symbol == '.' || symbol == ',' || symbol == '?' || symbol == '!' || symbol == '"' || symbol == ':' || symbol == ' ') && !word.empty())
         {
             treeNode.Add(word);
             word.clear();
         }
     }
-    treeNode.Add(word);
+    if (!word.empty())
+    {
+        treeNode.Add(word);
+    }
+
     std::vector<WordAndCount> wordsAndCounts = treeNode.Collect();
     std::ofstream out("wordsAndCounts.txt");
     for(size_t i = 0;i< wordsAndCounts.size();i++)

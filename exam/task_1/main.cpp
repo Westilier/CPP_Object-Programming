@@ -9,7 +9,7 @@ int main()
     std::string path, new_path;
     std::string name;
     std::string searchWord;
-    	while (true)
+    while (true)
 	{
         std::cout << "”кажите команду или введите info, дл€ получени€ списка команд" << std::endl;
         std::cin >> command;
@@ -17,7 +17,7 @@ int main()
         if (command == "info")
         {
             std::cout << "info - показать список команд дл€ работы с менеджером" << std::endl <<
-                "view - отобразить на консоль содержимого категории" << std::endl <<
+                "view - отобразить на консоль содержимого папке" << std::endl <<
                 "newd - создать новую папку" << std::endl <<
                 "newf - создать новый файл" << std::endl <<
                 "rename - переименовать" << std::endl << 

@@ -107,7 +107,7 @@ void Program::AdminPossibilities()
 	while (true) {
 		if (m_activeUser.IsAdmin())
 		{
-			std::cout << "1 - изменить пароль" << std::endl
+			std::cout << std::endl << "1 - изменить пароль" << std::endl
 				<< "2 - изменить логин" << std::endl
 				<< "3 - зарегистрировать пользователя" << std::endl
 				<< "4 - удалить ползователя" << std::endl
@@ -122,8 +122,8 @@ void Program::AdminPossibilities()
 				<< "13 - экспортировать категории в папку" << std::endl
 				<< "14 - экспортировать тесты с вопросами в файл" << std::endl
 				<< "15 - выйти" << std::endl;
-
 			std::cin >> key;
+			system("cls");
 			std::cin.ignore(20, '\n');
 			if (key == 1)
 			{
@@ -497,10 +497,10 @@ void Program::TesterPossibilities()
 
 	while (true)
 	{
-		std::cout << "1 - Пройти новый тест" << std::endl
-			<< "2 - Посмотреть результаты тестов" << std::endl
-			<< "3 - Продолжить преведущие тесты" << std::endl
-			<< "4 - Выйти" << std::endl;
+		std::cout << "1 -пройти тест" << std::endl
+			<< "2 - посмотреть результаты тестов" << std::endl
+			<< "3 - продолжить преведущие тесты" << std::endl
+			<< "4 - выйти" << std::endl;
 		std::cin >> key;
 		std::cin.ignore(20, '\n');
 		if (key == 1)
